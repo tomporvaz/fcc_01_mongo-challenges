@@ -42,13 +42,13 @@ mongoose.connect(process.env.MONGO_URI);
 
 // <Your code here >
 
-var Person = new Schema({
+let personSchema = new Schema({
   name : {type: String, required: true},
   age : Number,
   favoriteFoods : [String]
 });
 
-const person = mongoose.model('person', Person);
+let Person = mongoose.model('Person', personSchema);
 
 // **Note**: GoMix is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
