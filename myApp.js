@@ -43,10 +43,10 @@ mongoose.connect(process.env.MONGO_URI);
 // <Your code here >
 
 var Person = new Schema({
-  name : String [required],
+  name : {type: String, required: true},
   age : Number,
   favoriteFoods : [String]
-})
+});
 
 const person = mongoose.model('person', Person);
 
