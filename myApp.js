@@ -16,6 +16,12 @@ let Schema = mongoose.Schema;
 
 mongoose.connect(process.env.MONGO_URI);
 
+//from quick start guide in mongoose docs
+let db = mongoose.connection;
+db.on("error", console.error.bind(console, 'connection error'));
+db.once('open', function (){
+
+});
 
 /** # SCHEMAS and MODELS #
 /*  ====================== */
@@ -49,6 +55,8 @@ let personSchema = new Schema({
 });
 
 let Person = mongoose.model('Person', personSchema);
+
+
 
 // **Note**: GoMix is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
@@ -84,11 +92,12 @@ let Person = mongoose.model('Person', personSchema);
 // person.save(function(err, data) {
 //    ...do your stuff here...
 // });
+let person = new Person({name: "Tom", age: 34, favoriteFoods: ["tacos", "pizza", "french fries"]});
 
 var createAndSavePerson = function(done) {
-  
-  done(null /*, data*/);
-
+  person.save(function(err, person){console.log("Hi Tom");
+    if(err) {return done(err)};
+    done(null, person)});
 };
 
 /** 4) Create many People with `Model.create()` */
