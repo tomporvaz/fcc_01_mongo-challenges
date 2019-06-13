@@ -95,12 +95,15 @@ let Person = mongoose.model('Person', personSchema);
 let person = new Person({name: "Tom", age: 34, favoriteFoods: ["tacos", "pizza", "french fries"]});
 
 var createAndSavePerson = function(done) {
-  person.save(function(err, person){console.log("Hi Tom");
-    if(err) {return done(err)};
-    done(null, person)});
-};
+  person.save(
+    function(err, person){
+      console.log("Hi Tom");
+      if(err) {return done(err)};
+      done(null, person)}
+    );
+  };
 
-/** 4) Create many People with `Model.create()` */
+/** 4) Create many People with `Model.create()` */;
 
 // Sometimes you need to create many Instances of your Models,
 // e.g. when seeding a database with initial data. `Model.create()`
@@ -110,7 +113,13 @@ var createAndSavePerson = function(done) {
 // 'arrayOfPeople'.
 
 var createManyPeople = function(arrayOfPeople, done) {
-    
+    Person.create(arrayOfPeople, 
+      function (err, person) {
+        console.log(person.name + " was created.");
+        if(err) {return done(err)}
+        done(null, person)
+      }
+    );
     done(null/*, data*/);
     
 };
