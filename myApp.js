@@ -120,7 +120,6 @@ var createManyPeople = function(arrayOfPeople, done) {
         done(null, persons);
       }
     );
-    done(null/*, data*/);
     
 };
 
