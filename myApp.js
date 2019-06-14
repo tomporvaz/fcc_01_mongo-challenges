@@ -99,9 +99,10 @@ var createAndSavePerson = function(done) {
     function(err, person){
       console.log("Hi Tom");
       if(err) {return done(err)};
-      done(null, person)}
-    );
-  };
+      done(null, person);
+    }
+  );
+};
 
 /** 4) Create many People with `Model.create()` */;
 
@@ -135,8 +136,9 @@ var createManyPeople = function(arrayOfPeople, done) {
 // Use the function argument `personName` as search key.
 
 var findPeopleByName = function(personName, done) {
-  
-  done(null/*, data*/);
+  Person.find(personName);
+  if(err) {return done(err)};
+  done(null, docs);
 
 };
 
