@@ -264,7 +264,7 @@ var findAndUpdate = function(personName, done) {
 // As usual, use the function argument `personId` as search key.
 
 var removeById = function(personId, done) {
-  findByIdAndRemove(
+  Person.findByIdAndRemove(
     personId,
     function (err, person) {
       console.log(person.name + " thou art no more.");
