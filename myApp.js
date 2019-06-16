@@ -97,7 +97,7 @@ let person = new Person({name: "Tom", age: 34, favoriteFoods: ["tacos", "pizza",
 var createAndSavePerson = function(done) {
   person.save(
     function(err, person){
-      console.log("Hi Tom");
+      console.log("Hi Tom9");
       if(err) {return done(err)};
       done(null, person);
     }
@@ -210,8 +210,19 @@ var findPersonById = function(personId, done) {
 
 var findEditThenSave = function(personId, done) {
   var foodToAdd = 'hamburger';
-  
-  done(null/*, data*/);
+  Person.findById(
+    {_id: personId},
+    function (err, doc){
+      if(err) {return done(err)};
+      doc.favoriteFoods.push(foodToAdd);
+      doc.save(
+        function (err, doc){
+          if(err) {return done(err)};
+          done(err, doc);
+        }
+      )
+    }
+  )
 };
 
 /** 9) New Update : Use `findOneAndUpdate()` */
