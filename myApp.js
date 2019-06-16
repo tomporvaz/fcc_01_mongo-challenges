@@ -290,7 +290,7 @@ var removeManyPeople = function(done) {
     {name: nameToRemove},
     function (err, outcomesJSON) {
       if(err) {return done(err)};
-      done(err, outcomseJSON);
+      done(err, outcomesJSON);
     }
   )
 };
