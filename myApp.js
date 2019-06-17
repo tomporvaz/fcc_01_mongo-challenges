@@ -313,6 +313,13 @@ var removeManyPeople = function(done) {
 // Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`,
 // passing the `done(err, data)` callback to it.
 
+// * Pre/Post hooks,
+// * Validation,
+// * Schema Virtuals and  Model, Static, and Instance methods,
+// * and much more in the [mongoose docs](http://mongoosejs.com/docs/)
+
+
+//----- **DO NOT EDIT BELOW THIS LINE** ------------------------------
 var queryChain = function(done) {
   var foodToSearch = "burrito";
   Person.find({favoriteFoods: foodToSearch})
@@ -326,6 +333,8 @@ var queryChain = function(done) {
       }
     )
 };
+
+//This is a tiny change to test moving the entire repo.
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
