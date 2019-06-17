@@ -316,7 +316,7 @@ var removeManyPeople = function(done) {
 var queryChain = function(done) {
   var foodToSearch = "burrito";
   Person.find({favoriteFoods: foodToSearch})
-    .sort(asc)
+    .sort({name: 1})
     .limit(2)
     .select("-age")
     .exec(
